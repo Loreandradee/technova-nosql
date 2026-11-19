@@ -1,0 +1,6 @@
+[
+  {"_id":"C1","nome":"Ana Souza","email":"ana.souza@email.com","endereco":{"bairro":"Portão","cidade":"Curitiba","uf":"PR"},"dataCadastro":{"$date":"2026-09-02T12:00:00Z"}},
+  {"_id":"C2","nome":"Bruno Lima","email":"bruno.lima@email.com","endereco":{"bairro":"Batel","cidade":"Curitiba","uf":"PR"},"dataCadastro":{"$date":"2026-09-10T12:00:00Z"}},
+  {"_id":"C3","nome":"Carla Mendes","email":"carla.mendes@email.com","endereco":{"bairro":"Água Verde","cidade":"Curitiba","uf":"PR"},"dataCadastro":{"$date":"2026-09-15T12:00:00Z"}},
+  {"_id":"C4","nome":"Diego Santos","email":"diego.santos@email.com","endereco":{"bairro":"Centro","cidade":"São José dos Pinhais","uf":"PR"},"dataCadastro":{"$date":"2026-09-21T12:00:00Z"}}
+]

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TechNova · Loja de eletrônicos</title>
+<style>
+  :root{--ink:#14172b;--muted:#5d6278;--line:#e3e5ee;--bg:#f5f6fa;--card:#fff;--brand:#3b3bd6;--brand2:#e8e8ff;--accent:#ff8a3d;--ok:#1a9b63;--code:#0f1530}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"DM Sans","Segoe UI",system-ui,sans-serif;color:var(--ink);background:var(--bg);font-size:15px}
+  a{color:inherit;text-decoration:none}
+  header{background:var(--ink);color:#fff}
+  .top{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:28px;padding:16px 24px}
+  .logo{font-weight:800;font-size:22px;letter-spacing:-.5px;display:flex;align-items:center;gap:8px}
+  .logo i{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--brand),#7b5cff);display:inline-block;position:relative}
+  .logo i:after{content:"";position:absolute;inset:8px;border:2px solid #fff;border-radius:3px}
+  .logo b{color:var(--accent)}
+  .search{flex:1;background:#262a45;border-radius:10px;padding:10px 14px;color:#a9adc6;font-size:14px}
+  nav.menu{display:flex;gap:22px;font-size:14px;color:#cfd2e6}
+  nav.menu a.on{color:#fff;font-weight:700;border-bottom:2px solid var(--accent);padding-bottom:3px}
+  .user{display:flex;align-items:center;gap:8px;font-size:14px}
+  .user span{width:30px;height:30px;border-radius:50%;background:var(--accent);display:grid;place-items:center;font-weight:700;color:var(--ink)}
+  main{max-width:1180px;margin:0 auto;padding:26px 24px 40px}
+  h1{font-size:26px;margin:0 0 4px;letter-spacing:-.4px}
+  .sub{color:var(--muted);margin:0 0 20px}
+  .chips{display:flex;gap:8px;margin-bottom:20px}
+  .chip{padding:7px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:13px}
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:6px}
+  .thumb{background:var(--brand2);border-radius:10px;height:130px;display:grid;place-items:center;margin-bottom:6px}
+  .thumb svg{width:74px;height:74px}
+  .cat{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--brand);font-weight:700}
+  .nome{font-weight:700;font-size:17px}
+  .preco{font-size:20px;font-weight:800}
+  .parc{font-size:12px;color:var(--muted)}
+  .est{font-size:12px;color:var(--ok)}
+  .btn{margin-top:6px;background:var(--brand);color:#fff;border-radius:9px;padding:9px;text-align:center;font-weight:700;font-size:13px}
+  .btn.alt{background:#fff;color:var(--brand);border:1px solid var(--brand)}
+  .query{margin-top:26px;background:var(--code);color:#cfe3ff;border-radius:12px;padding:14px 18px;font:13px/1.55 "DejaVu Sans Mono",monospace}
+  .query .lbl{font-family:"DM Sans";font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8f97c7;margin-bottom:6px;display:flex;justify-content:space-between}
+  .query .lbl em{font-style:normal;color:#7ef0b5}
+  .k{color:#ffb86b}.s{color:#7ef0b5}.n{color:#8cc8ff}
+  .two{display:grid;grid-template-columns:1.1fr 1fr;gap:22px}
+  .box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}
+  .box h3{margin:0 0 12px;font-size:16px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th{text-align:left;color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.6px;padding:8px 6px;border-bottom:1px solid var(--line)}
+  td{padding:10px 6px;white-space:nowrap;border-bottom:1px solid var(--line)}
+  td.r,th.r{text-align:right}
+  .big{background:var(--brand2);border-radius:14px;height:300px;display:grid;place-items:center}
+  .big svg{width:170px;height:170px}
+  .tag{display:inline-block;padding:3px 9px;border-radius:999px;font-size:12px;font-weight:700;background:#e3f6ec;color:var(--ok)}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+  .kpi{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+  .kpi small{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.6px}
+  .kpi div{font-size:26px;font-weight:800;margin-top:4px}
+  .bar{display:flex;align-items:center;gap:10px;margin:12px 0}
+  .bar span:first-child{width:80px;font-weight:600}
+  .bar .t{flex:1;background:#eef0f7;border-radius:6px;height:26px;position:relative}
+  .bar .f{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--brand),#7b5cff)}
+  .bar .v{width:100px;text-align:right;font-weight:700}
+  .rec{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+  .rec .thumb{height:56px;width:64px;margin:0}.rec .thumb svg{width:36px;height:36px}
+  .score{margin-left:auto;font-size:12px;background:#fff3ea;color:#c2560f;padding:4px 9px;border-radius:999px;font-weight:700}
+  .crumbs{font-size:13px;color:var(--muted);margin-bottom:14px}
+  .itm{display:flex;align-items:center;gap:12px}
+  .itm .thumb{height:44px;width:52px;margin:0}.itm .thumb svg{width:28px;height:28px}
+  .tot td{font-weight:800;font-size:17px;border:none}
+  .note{font-size:13px;color:var(--muted);margin-top:10px}
+</style>
+</head>
+<body>
+<header><div class="top">
+  <a class="logo" href="#/"><i></i><span>Tech<b>Nova</b></span></a>
+  <div class="search">Buscar notebooks, monitores, periféricos…</div>
+  <nav class="menu">
+    <a href="#/" data-r="catalogo">Catálogo</a>
+    <a href="#/conta/C1" data-r="conta">Minha conta</a>
+    <a href="#/admin" data-r="admin">Painel</a>
+  </nav>
+  <div class="user"><span>A</span>Olá, Ana</div>
+</div></header>
+<main id="app"></main>
+<footer style="max-width:1180px;margin:0 auto;padding:0 24px 30px;color:#5d6278;font-size:12px">TechNova · protótipo acadêmico do artigo “Modelagem e aplicação de bancos NoSQL em um problema real”. Dados do banco <b>loja</b> do MongoDB Atlas (coleções produtos, clientes e pedido); recomendações pela mesma lógica da consulta Cypher do Neo4j.</footer>
+<script src="api-local.js"></script>
+<script>
+const ICON = {
+ P1:'<svg viewBox="0 0 64 64" fill="none" stroke="#3b3bd6" stroke-width="3" stroke-linejoin="round"><rect x="12" y="14" width="40" height="26" rx="3"/><path d="M6 46h52l-4 6H10z" fill="#3b3bd6" fill-opacity=".15"/></svg>',
+ P2:'<svg viewBox="0 0 64 64" fill="none" stroke="#3b3bd6" stroke-width="3"><rect x="20" y="10" width="24" height="42" rx="12"/><path d="M32 10v14"/></svg>',
+ P3:'<svg viewBox="0 0 64 64" fill="none" stroke="#3b3bd6" stroke-width="3" stroke-linecap="round"><rect x="6" y="18" width="52" height="28" rx="4"/><path d="M14 27h2M22 27h2M30 27h2M38 27h2M46 27h2M14 35h2M46 35h2M22 37h20"/></svg>',
+ P4:'<svg viewBox="0 0 64 64" fill="none" stroke="#3b3bd6" stroke-width="3" stroke-linejoin="round"><rect x="8" y="10" width="48" height="32" rx="3"/><path d="M26 42l-3 10h18l-3-10"/></svg>',
+ P5:'<svg viewBox="0 0 64 64" fill="none" stroke="#3b3bd6" stroke-width="3" stroke-linecap="round"><path d="M12 38V32a20 20 0 0140 0v6"/><rect x="8" y="36" width="10" height="16" rx="3"/><rect x="46" y="36" width="10" height="16" rx="3"/></svg>'};
+const brl = v => v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+const dt = x => new Date(x.$date||x).toLocaleDateString("pt-BR",{day:"2-digit",month:"short",year:"numeric",timeZone:"UTC"});
+const get = u => fetch(u).then(r => (r.ok && (r.headers.get("content-type")||"").includes("json")) ? r.json() : LocalAPI(u)).catch(() => LocalAPI(u));
+const q = (lbl, code, n) => `<div class="query"><div class="lbl"><span>Consulta executada no MongoDB Atlas · banco loja</span><em>${n}</em></div>${code}</div>`;
+const nomeAttr = k => ({processador:"Processador",memoriaRAM:"Memória RAM",armazenamento:"Armazenamento",tela:"Tela",conexao:"Conexão",dpi:"DPI",cor:"Cor",layout:"Layout",tipo:"Tipo",tamanho:"Tamanho",resolucao:"Resolução",taxaAtualizacao:"Taxa de atualização",microfone:"Microfone",cancelamentoRuido:"Cancelamento de ruído"}[k]||k);
+const val = v => v===true?"Sim":v===false?"Não":v;
+
+const views = {
+ async catalogo(cat){
+  const ps = await get("/api/produtos"+(cat?"?categoria="+encodeURIComponent(cat):""));
+  const cats = ["Todos","Computadores","Periféricos","Monitores","Áudio"];
+  return `<h1>Catálogo</h1><p class="sub">${ps.length} produtos encontrados na coleção <b>produtos</b></p>
+  <div class="chips">${cats.map(c=>`<a class="chip ${(c===(cat||"Todos"))?"on":""}" href="#/${c==="Todos"?"":"cat/"+c}">${c}</a>`).join("")}</div>
+  <div class="grid">${ps.map(p=>`<div class="card"><div class="thumb">${ICON[p._id]}</div>
+   <div class="cat">${p.categoria}</div><div class="nome">${p.nome}</div>
+   <div class="preco">${brl(p.preco)}</div><div class="parc">ou 10x de ${brl(p.preco/10)} sem juros</div>
+   <div class="est">● ${p.estoque} em estoque</div><a class="btn" href="#/produto/${p._id}">Ver detalhes</a></div>`).join("")}</div>
+  ${q("",`db.<span class="k">produtos</span>.find({ ativo: <span class="n">true</span>${cat?`, categoria: <span class="s">"${cat}"</span>`:""} }).sort({ nome: <span class="n">1</span> })`,`${ps.length} documentos`)}`;
+ },
+ async produto(id){
+  const p = await get("/api/produtos/"+id);
+  return `<div class="crumbs">Catálogo › ${p.categoria} › ${p.nome}</div>
+  <div class="two"><div class="big">${ICON[p._id]}</div>
+  <div class="box"><div class="cat">${p.categoria} · código ${p._id}</div>
+   <h1 style="margin:6px 0 10px">${p.nome}</h1>
+   <div class="preco" style="font-size:30px">${brl(p.preco)}</div>
+   <div class="parc">ou 10x de ${brl(p.preco/10)} sem juros · <span class="est">${p.estoque} unidades em estoque</span></div>
+   <h3 style="margin-top:20px">Ficha técnica</h3>
+   <table>${Object.entries(p.atributos).map(([k,v])=>`<tr><td style="color:var(--muted)">${nomeAttr(k)}</td><td><b>${val(v)}</b></td></tr>`).join("")}</table>
+   <p class="note">Os campos da ficha técnica variam conforme a categoria: cada documento guarda só os atributos do seu produto.</p>
+   <div style="display:flex;gap:10px"><a class="btn" style="flex:1">Adicionar ao carrinho</a><a class="btn alt" style="flex:1" href="#/">Voltar ao catálogo</a></div>
+  </div></div>
+  ${q("",`db.<span class="k">produtos</span>.findOne({ _id: <span class="s">"${id}"</span> })`,"1 documento")}`;
+ },
+ async conta(id){
+  const [{cliente:c,pedidos:ps},recs,prods] = await Promise.all([get("/api/clientes/"+id),get("/api/recomendacoes/"+id),get("/api/produtos")]);
+  return `<h1>Minha conta</h1><p class="sub">${c.nome} · ${c.email} · ${c.endereco.bairro}, ${c.endereco.cidade}/${c.endereco.uf}</p>
+  <div class="two"><div class="box"><h3>Meus pedidos</h3>
+   <table><tr><th>Pedido</th><th>Data</th><th>Itens</th><th>Status</th><th class="r">Total</th><th></th></tr>
+   ${ps.map(o=>`<tr><td><b>${o._id}</b></td><td>${dt(o.data)}</td><td style="white-space:normal">${o.itens.map(i=>i.nome).join(", ")}</td><td><span class="tag">${o.status}</span></td><td class="r"><b>${brl(o.total)}</b></td><td class="r"><a style="color:var(--brand);font-weight:700" href="#/pedido/${o._id}">Abrir</a></td></tr>`).join("")}</table>
+  </div>
+  <div class="box"><h3>Recomendados para você</h3>
+   <p class="note" style="margin-top:-6px">Clientes que compraram os mesmos produtos que você também levaram:</p>
+   ${recs.map(r=>{const p=prods.find(x=>x._id===r.produtoId);return `<div class="rec"><div class="thumb">${ICON[r.produtoId]}</div><div><b>${r.produto}</b><div class="parc">${brl(p.preco)}</div></div><span class="score">pontuação ${r.pontuacao}</span></div>`}).join("")}
+  </div></div>
+  ${q("",`db.<span class="k">clientes</span>.findOne({ _id: <span class="s">"${id}"</span> })<br>db.<span class="k">pedido</span>.find({ clienteId: <span class="s">"${id}"</span> }).sort({ data: <span class="n">-1</span> })   <span style="color:#8f97c7">// usa o índice clienteId_1_data_-1</span>`,`${ps.length} pedido(s)`)}
+  <div class="query" style="margin-top:10px"><div class="lbl"><span>Recomendação · consulta Cypher no Neo4j Aura</span><em>${recs.length} sugestões</em></div>MATCH (a:Customer {id:<span class="s">'${id}'</span>})-[:BOUGHT]->(:Product)&lt;-[:BOUGHT]-(:Customer)-[:BOUGHT]->(rec:Product)<br>WHERE NOT (a)-[:BOUGHT]->(rec) RETURN rec.name, count(*) AS pontuacao ORDER BY pontuacao DESC</div>`;
+ },
+ async pedido(id){
+  const o = await get("/api/pedidos/"+id);
+  return `<div class="crumbs">Minha conta › Meus pedidos › ${o._id}</div>
+  <h1>Pedido ${o._id}</h1><p class="sub">Realizado em ${dt(o.data)} · <span class="tag">${o.status}</span></p>
+  <div class="two"><div class="box"><h3>Itens do pedido</h3>
+   <table><tr><th>Produto</th><th class="r">Preço unit.</th><th class="r">Qtd.</th><th class="r">Subtotal</th></tr>
+   ${o.itens.map(i=>`<tr><td><div class="itm"><div class="thumb">${ICON[i.produtoId]}</div><b>${i.nome}</b></div></td><td class="r">${brl(i.precoUnit)}</td><td class="r">${i.qtd}</td><td class="r">${brl(i.precoUnit*i.qtd)}</td></tr>`).join("")}
+   <tr class="tot"><td>Total</td><td></td><td></td><td class="r">${brl(o.total)}</td></tr></table></div>
+  <div class="box"><h3>Por que esta tela é rápida?</h3>
+   <p class="note" style="font-size:14px;line-height:1.6;color:var(--ink)">Os itens ficam <b>incorporados</b> dentro do documento do pedido. Por isso, uma única leitura pelo <code>_id</code> já devolve tudo o que a tela mostra, sem junções. O nome e o preço de cada item são uma cópia do momento da compra, então o pedido continua correto mesmo que o preço do catálogo mude depois.</p>
+   <a class="btn alt" href="#/conta/${o.clienteId}">Voltar aos meus pedidos</a></div></div>
+  ${q("",`db.<span class="k">pedido</span>.findOne({ _id: <span class="s">"${id}"</span> })`,"1 documento · itens incorporados")}`;
+ },
+ async admin(){
+  const rs = await get("/api/painel/faturamento");
+  const tot = rs.reduce((s,r)=>s+r.receita,0), un = rs.reduce((s,r)=>s+r.unidades,0), max = rs[0].receita;
+  return `<h1>Painel de vendas</h1><p class="sub">Outubro de 2026 · pedidos com status PAGO</p>
+  <div class="kpis"><div class="kpi"><small>Faturamento</small><div>${brl(tot)}</div></div>
+   <div class="kpi"><small>Pedidos</small><div>4</div></div>
+   <div class="kpi"><small>Ticket médio</small><div>${brl(tot/4)}</div></div>
+   <div class="kpi"><small>Unidades vendidas</small><div>${un}</div></div></div>
+  <div class="two"><div class="box"><h3>Receita por produto</h3>
+   ${rs.map(r=>`<div class="bar"><span>${r.produto}</span><div class="t"><div class="f" style="width:${Math.max(2,r.receita/max*100)}%"></div></div><span class="v">${brl(r.receita)}</span></div>`).join("")}</div>
+  <div class="box"><h3>Ranking</h3><table><tr><th>Código</th><th>Produto</th><th class="r">Receita</th><th class="r">Unid.</th></tr>
+   ${rs.map(r=>`<tr><td>${r._id}</td><td><b>${r.produto}</b></td><td class="r">${brl(r.receita)}</td><td class="r">${r.unidades}</td></tr>`).join("")}</table>
+   <p class="note">O Mouse é o mais vendido em unidades, mas o Notebook concentra a receita.</p></div></div>
+  ${q("",`db.<span class="k">pedido</span>.aggregate([<br>&nbsp;&nbsp;{ $match: { status: <span class="s">"PAGO"</span>, data: { $gte: ISODate(<span class="s">"2026-10-01"</span>), $lt: ISODate(<span class="s">"2026-11-01"</span>) } } },<br>&nbsp;&nbsp;{ $unwind: <span class="s">"$itens"</span> },<br>&nbsp;&nbsp;{ $group: { _id: <span class="s">"$itens.produtoId"</span>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;receita: { $sum: { $multiply: [<span class="s">"$itens.precoUnit"</span>, <span class="s">"$itens.qtd"</span>] } },<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unidades: { $sum: <span class="s">"$itens.qtd"</span> } } },<br>&nbsp;&nbsp;{ $sort: { receita: <span class="n">-1</span> } } ])`,`${rs.length} grupos`)}`;
+ }
+};
+async function route(){
+  const h = location.hash.replace(/^#\//,"").split("/").map(decodeURIComponent);
+  let v="catalogo", arg;
+  if(h[0]==="cat"){arg=h[1]} else if(h[0] && views[h[0]]){v=h[0];arg=h[1]}
+  document.querySelectorAll("nav.menu a").forEach(a=>a.classList.toggle("on", a.dataset.r===(v==="produto"?"catalogo":v==="pedido"?"conta":v)));
+  document.getElementById("app").innerHTML = await views[v](arg);
+}
+addEventListener("hashchange",route); route();
+</script>
+</body>
+</html>

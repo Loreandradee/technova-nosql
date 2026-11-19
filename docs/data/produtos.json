@@ -1,0 +1,12 @@
+[
+  {"_id":"P1","nome":"Notebook","categoria":"Computadores","preco":3500,"estoque":12,"ativo":true,
+   "atributos":{"processador":"Intel Core i5","memoriaRAM":"16 GB","armazenamento":"SSD 512 GB","tela":"15,6 polegadas"}},
+  {"_id":"P2","nome":"Mouse","categoria":"Periféricos","preco":80,"estoque":40,"ativo":true,
+   "atributos":{"conexao":"Sem fio 2,4 GHz","dpi":1600,"cor":"Preto"}},
+  {"_id":"P3","nome":"Teclado","categoria":"Periféricos","preco":150,"estoque":25,"ativo":true,
+   "atributos":{"layout":"ABNT2","tipo":"Mecânico","conexao":"USB"}},
+  {"_id":"P4","nome":"Monitor","categoria":"Monitores","preco":1200,"estoque":8,"ativo":true,
+   "atributos":{"tamanho":"24 polegadas","resolucao":"1920 x 1080","taxaAtualizacao":"75 Hz"}},
+  {"_id":"P5","nome":"Headset","categoria":"Áudio","preco":250,"estoque":15,"ativo":true,
+   "atributos":{"conexao":"USB","microfone":true,"cancelamentoRuido":false}}
+]
