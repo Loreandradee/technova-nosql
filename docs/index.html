@@ -76,10 +76,12 @@
   <div class="search">Buscar notebooks, monitores, periféricos…</div>
   <nav class="menu">
     <a href="#/" data-r="catalogo">Catálogo</a>
-    <a href="#/conta/C1" data-r="conta">Minha conta</a>
+    <a href="#/conta/C1" data-r="conta" id="lnkConta">Minha conta</a>
     <a href="#/admin" data-r="admin">Painel</a>
   </nav>
-  <div class="user"><span>A</span>Olá, Ana</div>
+  <div class="user"><span id="ini">A</span><label for="selCli" style="color:#cfd2e6">Entrar como</label>
+    <select id="selCli" style="background:#262a45;color:#fff;border:1px solid #3a3f63;border-radius:8px;padding:6px 8px;font:inherit">
+      <option value="C1">Ana</option><option value="C2">Bruno</option><option value="C3">Carla</option><option value="C4">Diego</option></select></div>
 </div></header>
 <main id="app"></main>
 <footer style="max-width:1180px;margin:0 auto;padding:0 24px 30px;color:#5d6278;font-size:12px">TechNova · protótipo acadêmico do artigo “Modelagem e aplicação de bancos NoSQL em um problema real”. Dados do banco <b>loja</b> do MongoDB Atlas (coleções produtos, clientes e pedido); recomendações pela mesma lógica da consulta Cypher do Neo4j.</footer>
@@ -168,11 +170,16 @@ const views = {
   ${q("",`db.<span class="k">pedido</span>.aggregate([<br>&nbsp;&nbsp;{ $match: { status: <span class="s">"PAGO"</span>, data: { $gte: ISODate(<span class="s">"2026-10-01"</span>), $lt: ISODate(<span class="s">"2026-11-01"</span>) } } },<br>&nbsp;&nbsp;{ $unwind: <span class="s">"$itens"</span> },<br>&nbsp;&nbsp;{ $group: { _id: <span class="s">"$itens.produtoId"</span>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;receita: { $sum: { $multiply: [<span class="s">"$itens.precoUnit"</span>, <span class="s">"$itens.qtd"</span>] } },<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unidades: { $sum: <span class="s">"$itens.qtd"</span> } } },<br>&nbsp;&nbsp;{ $sort: { receita: <span class="n">-1</span> } } ])`,`${rs.length} grupos`)}`;
  }
 };
+function setCli(id){ const sel=document.getElementById("selCli"); sel.value=id;
+  document.getElementById("ini").textContent=sel.options[sel.selectedIndex].text[0];
+  document.getElementById("lnkConta").href="#/conta/"+id; }
+document.addEventListener("change", e => { if(e.target.id==="selCli"){ setCli(e.target.value); location.hash="#/conta/"+e.target.value; } });
 async function route(){
   const h = location.hash.replace(/^#\//,"").split("/").map(decodeURIComponent);
   let v="catalogo", arg;
   if(h[0]==="cat"){arg=h[1]} else if(h[0] && views[h[0]]){v=h[0];arg=h[1]}
   document.querySelectorAll("nav.menu a").forEach(a=>a.classList.toggle("on", a.dataset.r===(v==="produto"?"catalogo":v==="pedido"?"conta":v)));
+  if(v==="conta" && arg) setCli(arg);
   document.getElementById("app").innerHTML = await views[v](arg);
 }
 addEventListener("hashchange",route); route();

@@ -10,6 +10,7 @@ Trabalho acadêmico: a loja virtual fictícia **TechNova**, com persistência po
   - Minha conta e recomendações: https://loreandradee.github.io/technova-nosql/#/conta/C1
   - Detalhe do pedido: https://loreandradee.github.io/technova-nosql/#/pedido/PED-1001
   - Painel de vendas: https://loreandradee.github.io/technova-nosql/#/admin
+  - Outros clientes: use o seletor **Entrar como** no topo da tela (Ana, Bruno, Carla ou Diego) ou troque o fim do link para `#/conta/C2`, `C3` ou `C4`
 - **Artigo (PDF):** [artigo/Artigo_NoSQL_TechNova_versao_final.pdf](artigo/Artigo_NoSQL_TechNova_versao_final.pdf)
 - **Artigo (Word):** [artigo/Artigo_NoSQL_TechNova_versao_final.docx](artigo/Artigo_NoSQL_TechNova_versao_final.docx)
 - **Prints do MongoDB Atlas e das telas:** [prints/](prints/)
